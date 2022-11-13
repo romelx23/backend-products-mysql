@@ -6,6 +6,12 @@ const sequelize = new Sequelize(config.DB.DB_NAME, config.DB.DB_USER, config.DB.
   dialect: 'mysql',
   port: Number(config.DB.DB_PORT),
   sync: { force: false },
-  logging: false
+  logging: false,
+  pool: {
+    max: 5,
+    min: 0,
+    acquire: 30000,
+    idle: 10000
+  }
 })
 export default sequelize
